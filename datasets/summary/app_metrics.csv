@@ -1,0 +1,10 @@
+Experiment,latency,tuples
+resource_ethernet,7542.735,23040
+default_servers,16060.718,1141760
+resource_5G,3094.767,875580
+energy_5G,6079.755,464280
+energy_servers,13910.661,1380380
+energy_ethernet,12729.326,1772680
+default_ethernet,14101.371,1453140
+resource_servers,9948.064,1444740
+default_5G,7654.929,492720
