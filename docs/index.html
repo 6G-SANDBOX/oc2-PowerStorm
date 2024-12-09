@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+	<meta name="generator" content="Hugo 0.139.3"><script src="/6G-SANDBOX-PowerStorm/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=6G-SANDBOX-PowerStorm/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  6G-SANDBOX-PowerStorm
+  #
+
+The PowerStorm Framework, built on top of Apache Storm, aims to optimize the performance and energy efficiency of underlying infrastructures by strategically assigning streaming analytic job operators to worker nodes.
+For this project, we&rsquo;ve purchased seven UE (User Equipment) devices to showcase the usability of our scheduler, namely, three Raspberry Pi 5, two Jetson Nano, one Jetson NX Xavier, and one Jetson AGX Orin. For each UE device, we have also used the appropriate 5G toolkit.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/6G-SANDBOX-PowerStorm/">
+  <meta property="og:site_name" content="Powerstorm">
+  <meta property="og:title" content="Powerstorm">
+  <meta property="og:description" content="6G-SANDBOX-PowerStorm # The PowerStorm Framework, built on top of Apache Storm, aims to optimize the performance and energy efficiency of underlying infrastructures by strategically assigning streaming analytic job operators to worker nodes.
+For this project, we’ve purchased seven UE (User Equipment) devices to showcase the usability of our scheduler, namely, three Raspberry Pi 5, two Jetson Nano, one Jetson NX Xavier, and one Jetson AGX Orin. For each UE device, we have also used the appropriate 5G toolkit.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+<title> | Powerstorm</title>
+<link rel="manifest" href="/6G-SANDBOX-PowerStorm/manifest.json">
+<link rel="icon" href="/6G-SANDBOX-PowerStorm/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/6G-SANDBOX-PowerStorm/book.min.4336fb0b00814819f0c192e64dec463abe4564bbe4d57ec7715f9a2acdda42e8.css" integrity="sha256-Qzb7CwCBSBnwwZLmTexGOr5FZLvk1X7HcV&#43;aKs3aQug=" crossorigin="anonymous">
+  <script defer src="/6G-SANDBOX-PowerStorm/flexsearch.min.js"></script>
+  <script defer src="/6G-SANDBOX-PowerStorm/en.search.min.f18290d74f6c5b4af65dbdfe04c1ab3b8afc2ebb289ef98d7eff4e789a4af38f.js" integrity="sha256-8YKQ109sW0r2Xb3&#43;BMGrO4r8LrsonvmNfv9OeJpK848=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/6G-SANDBOX-PowerStorm/"><img src="/6G-SANDBOX-PowerStorm/images/favicon.png" alt="Logo" /><span>Powerstorm</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="http://linc.ucy.ac.cy" target="_blank" rel="noopener">
+        About Us
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/6G-SANDBOX-PowerStorm/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong></strong>
+
+  <label for="toc-control">
+    
+    <img src="/6G-SANDBOX-PowerStorm/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#how-to-use-powerstorm-scheduler">How to use PowerStorm Scheduler</a>
+      <ul>
+        <li><a href="#step-1-add-scheduler-code-to-the-nimbus-node">Step 1: Add Scheduler Code to the Nimbus Node</a></li>
+        <li><a href="#step-2-specify-worker-configurations-individually">Step 2: Specify Worker Configurations Individually</a></li>
+        <li><a href="#step-3-configure-scheduler-selection-on-the-nimbus-node">Step 3: Configure Scheduler Selection on the Nimbus Node</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="6g-sandbox-powerstorm">
+  6G-SANDBOX-PowerStorm
+  <a class="anchor" href="#6g-sandbox-powerstorm">#</a>
+</h1>
+<p>The PowerStorm Framework, built on top of Apache Storm, aims to optimize the performance and energy efficiency of underlying infrastructures by strategically assigning streaming analytic job operators to worker nodes.</p>
+<p>For this project, we&rsquo;ve purchased seven UE (User Equipment) devices to showcase the usability of our scheduler, namely, three Raspberry Pi 5, two Jetson Nano, one Jetson NX Xavier, and one Jetson AGX Orin. For each UE device, we have also used the appropriate 5G toolkit.</p>
+<p>For the extraction of monitoring measurements we have utilized the following technologies: <a href="https://www.netdata.cloud/?utm_term=netdata&amp;utm_campaign=&amp;utm_source=adwords&amp;utm_medium=ppc&amp;hsa_acc=1994805325&amp;hsa_cam=21224984326&amp;hsa_grp=161333239573&amp;hsa_ad=697502229587&amp;hsa_src=g&amp;hsa_tgt=kwd-307696195113&amp;hsa_kw=netdata&amp;hsa_mt=e&amp;hsa_net=adwords&amp;hsa_ver=3&amp;gad_source=1&amp;gclid=CjwKCAiA0rW6BhAcEiwAQH28IiNLgv1FwoMAvxVbheRbSid7lCMZKSJ5MeJzr-k3t2areJwrGNYhvRoCvNQQAvD_BwE">Netdata</a>, <a href="https://github.com/google/cadvisor">Cadvisor</a>, <a href="https://prometheus.io/">Prometheus</a> and <a href="https://www.consul.io/">Consul</a>, as to automatically capture and store both utilization and power consumption metrics.</p>
+<h1 id="results">
+  Results
+  <a class="anchor" href="#results">#</a>
+</h1>
+<p>To conduct our experiments, we leveraged Berlin&rsquo;s testbed and introduced our 5G-enabled compute nodes, creating three distinct configurations. Below is a detailed description of each setup:</p>
+<table>
+  <tr align="center" style="border-bottom: 0.5px solid grey">
+    <th style="border-right: 1px solid white; border-bottom: 0.5px solid white">Setup</th>
+    <th style="border-bottom: 0.5px solid white">Description</th>
+  <tr>
+    <td>Local Network via Ethernet</td>
+    <td>Edge compute nodes connected to a local router via Ethernet - these were out initial experiments</td>
+  </tr>
+    <tr>
+    <td>Edge Cluster via 5G Connection</td>
+    <td>Three virtual machines (VMs) provided by Pilot: <br/>
+        <ul>
+        <li>VM-Big-0: 16 GB RAM, hosted on a separate server.</li>
+        <li>VM-Big-1: 16 GB RAM, hosted on a separate server.</li>
+        <li>VM-Small-0: 8 GB RAM, collocated with VM-Big-1 on the same server.</li>
+        The cluster ran the Apache Storm analytical pipeline, with workloads (tuples) generated via a user equipment (UE) device connected to the 5G network.
+        </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>5G Connectivity of UE devices</td>
+    <td>All 5G-enabled UE devices connected to Berlin's RAN (Radio Access Network). Trials were repeated over the 5G network to evaluate performance under these conditions.</td>
+  </tr>
+</table>
+<p align="center">
+   <img src="./figure.png" alt=" Latency & Tuples Comparison for Local Ethernet, 5G Edge Cluster, and UE Devices." style="width: 95%">
+   <br/>Figure 1: Latency & Tuples Comparison for Local Ethernet, 5G Edge Cluster, and UE Devices.
+</p>
+The figure above presents the application-level performance metrics, specifically end-to-end latency and the total number of processed tuples, across our three experimental setups. Notably, PowerStorm outperformed other configurations in all cases, with the Resource-Aware scheduler proving to be the most effective in terms of performance. Examining the network characteristics, we observe that a local connection via Ethernet yields slightly better performance compared to execution on the Edge Cluster. However, this difference is minor, considering that in the Ethernet setup, data generators are collocated with the devices, whereas in the Edge Cluster setup, data must traverse the 5G network. The most significant finding from our experiments is that deploying UE compute devices with 5G network connectivity surpasses the performance of Ethernet connections, demonstrating the high quality and robust QoS offered by 5G radio access networks.
+<p>In terms of energy consumption within the local network (ethernet), both PowerStorm and Resource-aware execution demonstrated a reduction in energy use, with decreases of approximately 15% and 5.9% respectively. These results align with our initial expectations based on preliminary trials. Next, we analyzed energy consumption during the Edge Cluster execution, involving 5G data generation. In this scenario, PowerStorm resulted in a 13.2% increase in energy consumption, while the Resource-aware scheduler exhibited a more substantial rise of 135.9%. Despite the increased energy demands, both approaches provided superior performance in latency reduction and overall tuples processed, illustrating the trade-off between energy efficiency and performance gains in this setting. Finally, we compared the energy consumption across three configurations, namely, the default execution of Apache Storm, the PowerStorm-enabled deployment, and the resource-aware deployment, in the 5G RAN network. In this comparison, PowerStorm showed a minimal energy increase of just 0.43%, whereas the Resource-aware scheduler nearly doubled the system&rsquo;s energy consumption, with an increase of 93.7%.</p>
+<p>When comparing the results across different deployments (Ethernet, 5G-Edge, and 5G-RAN), we observed several noteworthy findings. The Edge cluster proved to be the most power-intensive, primarily due to the use of conventional server hardware. In terms of energy consumption, there was little difference between devices connected via Ethernet and those connected via 5G. However, executing our workload over the 5G network significantly enhanced performance.</p>
+<p>To this end, our experiments and analyses demonstrate that modern big data streaming engines are well-suited for operation on 5G networks. Running these engines on 5G networks offers performance benefits comparable to those of Ethernet connectivity. Furthermore, deploying 5G-enabled User Equipment (UE) devices with processing capabilities enhances both performance and energy efficiency, as evidenced by our experimental results.</p>
+<h1 id="datasets">
+  Datasets
+  <a class="anchor" href="#datasets">#</a>
+</h1>
+<p>Our datasets can be found under the <code>/datasets</code> folder. Inside, one can find the <code>summary</code> and <code>raw</code> folders. As their name implies, we include both the raw datasets that include the collected utilization and application measurements, whilst, the summary includes their summarized information.</p>
+<p>Our dataset naming convention is straightforward. The first word identifies the scheduler used in the configuration, while the second word specifies the primary infrastructure or communication network employed.
+For example, &ldquo;default_5G&rdquo; refers to the dataset generated from experiments conducted using the default Apache Storm scheduler on UE devices connected via the 5G network.</p>
+<p>The following table outlines the mapping of dataset keyword names:</p>
+<table>
+  <tr align="center" style="border-bottom: 0.5px solid grey">
+    <th style="border-right: 1px solid white; border-bottom: 0.5px solid white">Keyword</th>
+    <th style="border-right: 1px solid white; border-bottom: 0.5px solid white">Scheduler</th>
+    <th style="border-right: 1px solid white; border-bottom: 0.5px solid white">Experiment Setup</th>
+    <th style="border-bottom: 0.5px solid white">Description</th>
+  <tr>
+    <td>default</td>
+    <td>✅</td>
+    <td></td>
+    <td>Utilizes the Apache Storm default scheduler</td>
+  </tr>
+  <tr>
+    <td>resource</td>
+    <td>✅</td>
+    <td></td>
+    <td>Utilizes the Apache Storm Resource-Aware scheduler</td>
+  </tr>
+  <tr>
+    <td>energy</td>
+    <td>✅</td>
+    <td></td>
+    <td>Utilizes our Powerstorm scheduler</td>
+  </tr>
+  <tr>
+    <td>5G</td>
+    <td></td>
+    <td>✅</td>
+    <td>Uses the "5G Connectivity of UE devices" setup</td>
+  </tr>
+  <tr>
+    <td>edge</td>
+    <td></td>
+    <td>✅</td>
+    <td>Uses the "Edge Cluster via 5G Connection" setup</td>
+  </tr>
+  <tr>
+    <td>ethernet</td>
+    <td></td>
+    <td>✅</td>
+    <td>Uses the "Local Network via Ethernet" setup</td>
+  </tr>
+</table>
+<h1 id="code">
+  Code
+  <a class="anchor" href="#code">#</a>
+</h1>
+<p>Under <code>/storm</code> we include the Apache Storm 2.2.0 binaries and code, including our PowerStorm scheduler.</p>
+<h2 id="how-to-use-powerstorm-scheduler">
+  How to use PowerStorm Scheduler
+  <a class="anchor" href="#how-to-use-powerstorm-scheduler">#</a>
+</h2>
+<h3 id="step-1-add-scheduler-code-to-the-nimbus-node">
+  Step 1: Add Scheduler Code to the Nimbus Node
+  <a class="anchor" href="#step-1-add-scheduler-code-to-the-nimbus-node">#</a>
+</h3>
+<p>To use the PowerStorm Scheduler, the you must first overwrite their Apache Storm folder with the contents of the zip file located at <code>/code/storm-2.2.0/storm-dist/binary/final-package/target/apache-storm-2.2.0.zip</code>. This step is required only for the resource that will act as the Nimbus, as it needs access to the scheduler&rsquo;s code.</p>
+<p>If you wish to use a different version of Apache Storm, you will need to rebuild its binaries. For detailed instructions on how to do this, refer to their <a href="https://github.com/apache/storm/blob/master/DEVELOPER.md#packaging">developer guide</a>.</p>
+<h3 id="step-2-specify-worker-configurations-individually">
+  Step 2: Specify Worker Configurations Individually
+  <a class="anchor" href="#step-2-specify-worker-configurations-individually">#</a>
+</h3>
+<p>To ensure our scheduler functions correctly, you need to configure certain settings on each node. This involves adding new parameters to their <code>storm.yaml</code> configuration file. Specifically, the parameters to be included are as follows:</p>
+<ul>
+<li><b>supervisor.cores</b>, which is the total number of CPU cores of the device</li>
+<li><b>supervisor.clock</b>, , the CPU clock measured in GHz</li>
+<li><b>supervisor.power.idle</b>, the power that the node consumes on idle, in Watts</li>
+<li><b>supervisor.power.max</b>, the maximum power it can consume, measured in Watts</li>
+</ul>
+<p>Here&rsquo;s a <code>storm.yaml</code> example on how to define those parameters:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">nimbus.seeds</span>: [<span style="color:#e6db74">&#34;nimbus&#34;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#f92672">storm.zookeeper.servers</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#e6db74">&#34;zookeeper&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">supervisor.slots.ports</span>:
+</span></span><span style="display:flex;"><span>   - <span style="color:#ae81ff">6700</span>
+</span></span><span style="display:flex;"><span>   - <span style="color:#ae81ff">6701</span>
+</span></span><span style="display:flex;"><span>   - <span style="color:#ae81ff">6702</span>
+</span></span><span style="display:flex;"><span>   - <span style="color:#ae81ff">6703</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">supervisor.cores</span>: <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">supervisor.clock</span>: <span style="color:#ae81ff">1.8</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">supervisor.power.idle</span>: <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">supervisor.power.max</span>: <span style="color:#ae81ff">8</span>
+</span></span></code></pre></div><h3 id="step-3-configure-scheduler-selection-on-the-nimbus-node">
+  Step 3: Configure Scheduler Selection on the Nimbus Node
+  <a class="anchor" href="#step-3-configure-scheduler-selection-on-the-nimbus-node">#</a>
+</h3>
+<p>The last step, is to specify to nimbus that it needs to use the Powerstorm strategy. To do that, you need to add the following lines on your <code>storm.yaml</code> on your nimbus node:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">storm.scheduler</span>: <span style="color:#e6db74">&#34;org.apache.storm.scheduler.resource.ResourceAwareScheduler&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">topology.scheduler.strategy</span>: <span style="color:#e6db74">&#34;org.apache.storm.scheduler.resource.strategies.scheduling.EnergyAwareStrategy&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">topology.scheduler.energy_awareness</span>: <span style="color:#e6db74">&#34;1.0&#34;</span>
+</span></span></code></pre></div><p>The PowerStorm scheduler uses the Resource Aware Scheduler code underneath, hence why we need the first configuration line.
+The second line, specifies that it will use the Powerstorm strategy, which is named as &ldquo;EnergyAwareStrategy&rdquo;.
+Lastly, one can define the &ldquo;energy awareness&rdquo;. Our scheduler takes into consideration both the energy that one node can consume and it&rsquo;s processing capability. In case of adding &ldquo;energy_awareness&rdquo; 1.0, then the scheduler will only take into consideration to prioritize the nodes that consume the less energy. In case of adding 0.0 as energy_awareness, then it will take into consideration the resource capabilities, as the Resource Aware Scheduler does. One can also define another percentage on how &ldquo;energy aware&rdquo; or &ldquo;resource aware&rdquo; where it could any number between 0 and 1.</p>
+<h1 id="workload--configurations">
+  Workload &amp; Configurations
+  <a class="anchor" href="#workload--configurations">#</a>
+</h1>
+<p>For these experiments, we have employed the widely known <a href="https://github.com/yahoo/streaming-benchmarks">Yahoo Streaming Benchmark</a>, which is designed to simulate a data processing pipeline for extracting insights from marketing campaigns using <a href="https://storm.apache.org/">Apache Storm</a>. The pipeline executed on the worker device includes steps such as receiving advertising traffic data, filtering the data, removing any unnecessary values, combining the data with existing information from a key-value store, and storing the final results. All data produced by a data generator is pushed and extracted through a message queue (<a href="https://kafka.apache.org/">Apache Kafka</a>), while intermediate data and final results are stored in an in-memory database (<a href="https://redis.io/">Redis</a>).</p>
+<p>For evaluating <strong>the performance of this application</strong>, we extract the following measurements from the benchmarking log files:</p>
+<table>
+  <tr align="center" style="border-bottom: 0.5px solid grey">
+    <th style="border-right: 1px solid white; border-bottom: 0.5px solid white">Metric</th>
+    <th style="border-bottom: 0.5px solid white">Description</th>
+  <tr>
+    <td><strong># of Tuples</strong></td>
+    <td>The total number of tuples processed during execution</td>
+  </tr>
+  <tr>
+    <td><strong>Latency</strong></td>
+    <td>The total application latency, measured in ms, based on the statistics provided by Apache Storm for each deployed task</td>
+  </tr>
+</table>
+<p>In regards to the application parameters we used the following ones:</p>
+<table>
+  <tr align="center" style="border-bottom: 0.5px solid grey">
+    <th style="border-bottom: 0.5px solid white">Application Parameters</th>
+  <tr>
+    <td><ul><li><i>campaigns: 100000</i>, which is the number of campaigns.</li><li><i>tuples_per_second: 1000000</i>, which is the number of emitted tuples per second.</li> <li><i>kafka_event_count: 100000000</i>, the number of generated and published events on kafka</li></ul></td>
+  </tr>
+</table></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#how-to-use-powerstorm-scheduler">How to use PowerStorm Scheduler</a>
+      <ul>
+        <li><a href="#step-1-add-scheduler-code-to-the-nimbus-node">Step 1: Add Scheduler Code to the Nimbus Node</a></li>
+        <li><a href="#step-2-specify-worker-configurations-individually">Step 2: Specify Worker Configurations Individually</a></li>
+        <li><a href="#step-3-configure-scheduler-selection-on-the-nimbus-node">Step 3: Configure Scheduler Selection on the Nimbus Node</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

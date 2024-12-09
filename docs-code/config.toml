@@ -1,0 +1,27 @@
+baseURL = 'https://ucy-linc-lab.github.io/6G-SANDBOX-PowerStorm/'
+languageCode = 'en'
+title = 'Powerstorm'
+defaultcontentlanguage = 'en'
+
+[params]
+  author = 'Joanna Georgiou'
+  description = '6G-SANDBOX-PowerStorm: an Apache Storm Energy-Aware Scheduler'
+  keywords = 'benchmarking,cloud,computing,edge,IoT,dcs,apache,storm'
+  avatarurl = 'images/favicon.png'
+  #BookTheme = 'dark'
+  BookToC = true
+  BookLogo = 'images/favicon.png'
+  
+[outputs]
+  home = [ "HTML"]
+  
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+      
+[menu]
+[[menu.after]]
+  name = "About Us"
+  url = "http://linc.ucy.ac.cy"
+  weight = 10
