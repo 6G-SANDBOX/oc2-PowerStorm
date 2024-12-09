@@ -5,7 +5,7 @@ For this project, we've purchased seven UE (User Equipment) devices to showcase 
 
 For the extraction of monitoring measurements we have utilized the following technologies: [Netdata](https://www.netdata.cloud/?utm_term=netdata&utm_campaign=&utm_source=adwords&utm_medium=ppc&hsa_acc=1994805325&hsa_cam=21224984326&hsa_grp=161333239573&hsa_ad=697502229587&hsa_src=g&hsa_tgt=kwd-307696195113&hsa_kw=netdata&hsa_mt=e&hsa_net=adwords&hsa_ver=3&gad_source=1&gclid=CjwKCAiA0rW6BhAcEiwAQH28IiNLgv1FwoMAvxVbheRbSid7lCMZKSJ5MeJzr-k3t2areJwrGNYhvRoCvNQQAvD_BwE), [Cadvisor](https://github.com/google/cadvisor), [Prometheus](https://prometheus.io/) and [Consul](https://www.consul.io/), as to automatically capture and store both utilization and power consumption metrics.
 
-# Results
+## Results
 
 To conduct our experiments, we leveraged Berlin's testbed and introduced our 5G-enabled compute nodes, creating three distinct configurations. Below is a detailed description of each setup:
 <table>
@@ -45,7 +45,7 @@ When comparing the results across different deployments (Ethernet, 5G-Edge, and 
 
 To this end, our experiments and analyses demonstrate that modern big data streaming engines are well-suited for operation on 5G networks. Running these engines on 5G networks offers performance benefits comparable to those of Ethernet connectivity. Furthermore, deploying 5G-enabled User Equipment (UE) devices with processing capabilities enhances both performance and energy efficiency, as evidenced by our experimental results.
 
-# Datasets
+## Datasets
 Our datasets can be found under the `/datasets` folder. Inside, one can find the `summary` and `raw` folders. As their name implies, we include both the raw datasets that include the collected utilization and application measurements, whilst, the summary includes their summarized information.
 
 Our dataset naming convention is straightforward. The first word identifies the scheduler used in the configuration, while the second word specifies the primary infrastructure or communication network employed.
@@ -96,9 +96,8 @@ The following table outlines the mapping of dataset keyword names:
   </tr>
 </table>
 
-# Code  
+## How to use PowerStorm Scheduler  
 Under `/storm` we include the Apache Storm 2.2.0 binaries and code, including our PowerStorm scheduler.
-## How to use PowerStorm Scheduler
 ### Step 1: Add Scheduler Code to the Nimbus Node
 To use the PowerStorm Scheduler, the you must first overwrite their Apache Storm folder with the contents of the zip file located at `/code/storm-2.2.0/storm-dist/binary/final-package/target/apache-storm-2.2.0.zip`. This step is required only for the resource that will act as the Nimbus, as it needs access to the scheduler's code.
 
@@ -142,7 +141,7 @@ The PowerStorm scheduler uses the Resource Aware Scheduler code underneath, henc
 The second line, specifies that it will use the Powerstorm strategy, which is named as "EnergyAwareStrategy".
 Lastly, one can define the "energy awareness". Our scheduler takes into consideration both the energy that one node can consume and it's processing capability. In case of adding "energy_awareness" 1.0, then the scheduler will only take into consideration to prioritize the nodes that consume the less energy. In case of adding 0.0 as energy_awareness, then it will take into consideration the resource capabilities, as the Resource Aware Scheduler does. One can also define another percentage on how "energy aware" or "resource aware" where it could any number between 0 and 1.
 
-# Workload & Configurations
+## Workload & Configurations
 For these experiments, we have employed the widely known [Yahoo Streaming Benchmark](https://github.com/yahoo/streaming-benchmarks), which is designed to simulate a data processing pipeline for extracting insights from marketing campaigns using [Apache Storm](https://storm.apache.org/). The pipeline executed on the worker device includes steps such as receiving advertising traffic data, filtering the data, removing any unnecessary values, combining the data with existing information from a key-value store, and storing the final results. All data produced by a data generator is pushed and extracted through a message queue ([Apache Kafka](https://kafka.apache.org/)), while intermediate data and final results are stored in an in-memory database ([Redis](https://redis.io/)).
 
 For evaluating <strong>the performance of this application</strong>, we extract the following measurements from the benchmarking log files:
