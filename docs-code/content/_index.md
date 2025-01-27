@@ -99,9 +99,9 @@ The following table outlines the mapping of dataset keyword names:
 ## How to use PowerStorm Scheduler  
 Under `/storm` we include the Apache Storm 2.2.0 binaries and code, including our PowerStorm scheduler.
 ### Step 1: Add Scheduler Code to the Nimbus Node
-To use the PowerStorm Scheduler, the you must first overwrite their Apache Storm folder with the contents of the zip file located at `/code/storm-2.2.0/storm-dist/binary/final-package/target/apache-storm-2.2.0.zip`. This step is required only for the resource that will act as the Nimbus, as it needs access to the scheduler's code.
+To use the PowerStorm Scheduler, you must first overwrite your Apache Storm folder with the contents of the ZIP file located at `/code/apache-storm-2.2.0.zip`. This step is required only for the resource that will act as the Nimbus, as it needs access to the scheduler's code.
 
-If you wish to use a different version of Apache Storm, you will need to rebuild its binaries. For detailed instructions on how to do this, refer to their [developer guide](https://github.com/apache/storm/blob/master/DEVELOPER.md#packaging).
+If you wish to use a different version of Apache Storm, you will need to rebuild its binaries and retrieve the newly built ZIP file from `/code/storm-2.2.0/storm-dist/binary/final-package/target/apache-storm-2.2.0.zip`. For detailed instructions on how to do this, refer to their [developer guide](https://github.com/apache/storm/blob/master/DEVELOPER.md#packaging).
 
 ### Step 2: Specify Worker Configurations Individually
 To ensure our scheduler functions correctly, you need to configure certain settings on each node. This involves adding new parameters to their `storm.yaml` configuration file. Specifically, the parameters to be included are as follows:

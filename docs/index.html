@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-	<meta name="generator" content="Hugo 0.139.3"><script src="/6G-SANDBOX-PowerStorm/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=6G-SANDBOX-PowerStorm/livereload" data-no-instant defer></script>
+	<meta name="generator" content="Hugo 0.142.0"><script src="/6G-SANDBOX-PowerStorm/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=6G-SANDBOX-PowerStorm/livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -251,8 +251,8 @@ For example, &ldquo;default_5G&rdquo; refers to the dataset generated from exper
   Step 1: Add Scheduler Code to the Nimbus Node
   <a class="anchor" href="#step-1-add-scheduler-code-to-the-nimbus-node">#</a>
 </h3>
-<p>To use the PowerStorm Scheduler, the you must first overwrite their Apache Storm folder with the contents of the zip file located at <code>/code/storm-2.2.0/storm-dist/binary/final-package/target/apache-storm-2.2.0.zip</code>. This step is required only for the resource that will act as the Nimbus, as it needs access to the scheduler&rsquo;s code.</p>
-<p>If you wish to use a different version of Apache Storm, you will need to rebuild its binaries. For detailed instructions on how to do this, refer to their <a href="https://github.com/apache/storm/blob/master/DEVELOPER.md#packaging">developer guide</a>.</p>
+<p>To use the PowerStorm Scheduler, you must first overwrite your Apache Storm folder with the contents of the ZIP file located at <code>/code/apache-storm-2.2.0.zip</code>. This step is required only for the resource that will act as the Nimbus, as it needs access to the scheduler&rsquo;s code.</p>
+<p>If you wish to use a different version of Apache Storm, you will need to rebuild its binaries and retrieve the newly built ZIP file from <code>/code/storm-2.2.0/storm-dist/binary/final-package/target/apache-storm-2.2.0.zip</code>. For detailed instructions on how to do this, refer to their <a href="https://github.com/apache/storm/blob/master/DEVELOPER.md#packaging">developer guide</a>.</p>
 <h3 id="step-2-specify-worker-configurations-individually">
   Step 2: Specify Worker Configurations Individually
   <a class="anchor" href="#step-2-specify-worker-configurations-individually">#</a>
